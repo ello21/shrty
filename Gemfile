@@ -28,6 +28,9 @@ gem 'bootstrap-sass', '~> 3.3.1'
 # Add vendor prefixes to css
 gem 'autoprefixer-rails'
 
+# Use Twilio gem for SMS
+gem 'twilio-ruby'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
