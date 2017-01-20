@@ -1,5 +1,5 @@
 = Shrty
-=== Customize Your Short Links -- <i>go shrty</i>!
+=== Create Customized Short Links -- <i>go shrty</i>!
 {<img src="https://travis-ci.org/ello21/shrty.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/ello21/shrty]
 
 === Website
