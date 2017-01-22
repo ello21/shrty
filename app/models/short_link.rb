@@ -14,7 +14,7 @@ class ShortLink < ActiveRecord::Base
 								length: { maximum: 10,
 									too_long: "Please keep your Shrty link under %{count} characters. That's what this party is all about, right?" },
 								format: { with: /\A[a-zA-Z0-9_-]+\z/,
-									message:"Shrty links cannot contain spaces and only contain the following characters: '-, _, a-z, A-Z, 0-9'" }
+									message:"Shrty links cannot contain spaces and can only contain the following characters: '-, _, a-z, A-Z, 0-9'" }
 
 	def valid_destination_url?
 		uri = URI.parse(self.destination_url)
