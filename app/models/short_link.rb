@@ -22,7 +22,6 @@ class ShortLink < ActiveRecord::Base
 			true
 		else
 			errors.add(:destination_url, "Your long url is invalid. Please include 'http://'")
-			puts "not valid url"
 			false
 		end
 	rescue URI::InvalidURIError
