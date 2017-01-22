@@ -1,0 +1,33 @@
+<%= form_for(@text_message) do |f| %>
+  <% if @text_message.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@text_message.errors.count, "error") %> prohibited this text_message from being saved:</h2>
+
+      <ul>
+      <% @text_message.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :message %><br>
+    <%= f.text_area :message %>
+  </div>
+  <div class="field">
+    <%= f.label :from_phone_number %><br>
+    <%= f.text_field :from_phone_number %>
+  </div>
+  <div class="field">
+    <%= f.label :to_phone_number %><br>
+    <%= f.text_field :to_phone_number %>
+  </div>
+  <div class="field">
+    <%= f.label :short_link_id %><br>
+    <%= f.text_field :short_link_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User short key:</strong>
+  <%= @short_link.user_short_key %>
+</p>
+
+<p>
+  <strong>Destination url:</strong>
+  <%= @short_link.destination_url %>
+</p>
+
+<p>
+  <strong>Http status:</strong>
+  <%= @short_link.http_status %>
+</p>
+
+<%= link_to 'Edit', edit_short_link_path(@short_link) %> |
+<%= link_to 'Back', short_links_path %>
