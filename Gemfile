@@ -54,6 +54,12 @@ group :test do
 
   # Auto-run specs when changes to app and tests detected
   gem 'guard-rspec'
+
+  # Include shoulda matchers for rspec
+  gem 'shoulda-matchers'
+
+  # Refresh database after tests
+  gem 'database_cleaner'
 end
 
 group :development, :test do
