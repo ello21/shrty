@@ -1,1 +1,29 @@
-<h2>Yo! It's <%= Time.now %></h2>
+<p id="notice"><%= notice %></p>
+
+<h1>shrty</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User short key</th>
+      <th>Destination url</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @short_links.each do |short_link| %>
+      <tr>
+        <td><%= short_link.user_short_key %></td>
+        <td><%= short_link.destination_url %></td>
+        <td><%= link_to 'Show', short_link %></td>
+        <td><%= link_to 'Edit', edit_short_link_path(short_link) %></td>
+        <td><%= link_to 'Destroy', short_link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Short link', new_short_link_path %>
