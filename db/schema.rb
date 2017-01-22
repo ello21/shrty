@@ -11,9 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20170122003050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "short_links", force: :cascade do |t|
+    t.string   "user_short_key"
+    t.text     "destination_url"
+    t.integer  "http_status"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "text_messages", force: :cascade do |t|
+    t.text     "message"
+    t.string   "from_phone_number"
+    t.string   "to_phone_number"
+    t.integer  "short_link_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "text_messages", ["short_link_id"], name: "index_text_messages_on_short_link_id", using: :btree
+
+  add_foreign_key "text_messages", "short_links"
 end
