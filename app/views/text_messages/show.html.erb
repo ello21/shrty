@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @text_message.message %>
+</p>
+
+<p>
+  <strong>From phone number:</strong>
+  <%= @text_message.from_phone_number %>
+</p>
+
+<p>
+  <strong>To phone number:</strong>
+  <%= @text_message.to_phone_number %>
+</p>
+
+<p>
+  <strong>Short link:</strong>
+  <%= @text_message.short_link %>
+</p>
+
+<%= link_to 'Edit', edit_text_message_path(@text_message) %> |
+<%= link_to 'Back', text_messages_path %>
