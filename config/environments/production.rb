@@ -78,5 +78,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Restrict access to /text route to Twilio only
-  config.middleware.use Rack::TwilioWebhookAuthentication, Rails.application.secrets.twilio_auth_token, '/text'
+  # config.middleware.use Rack::TwilioWebhookAuthentication, Rails.application.secrets.twilio_auth_token, '/text'
 end
