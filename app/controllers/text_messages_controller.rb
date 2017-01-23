@@ -1,5 +1,7 @@
 class TextMessagesController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_text_message, only: [:show, :edit, :update, :destroy]
+  after_action :send_twilio_message, only: [:create]
 
   # GET /text_messages
   # GET /text_messages.json
@@ -14,7 +16,20 @@ class TextMessagesController < ApplicationController
 
   # GET /text_messages/new
   def new
-    @text_message = TextMessage.new
+    @short_link = ShortLink.find(params[:short_link_id])
+    @text_message = TextMessage.new(short_link_id: @short_link.id)
+
+    respond_to do |format|
+      if @text_message
+        format.html { redirect_to @text_message, notice: 'Text message was successfully created.' }
+        format.json { render :show, status: :created, location: @text_message }
+        format.js   { }
+      else
+        format.html { render :new }
+        format.js   { render template: 'text_messages/errors.js.erb' }
+        format.json { render json: @text_message.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # GET /text_messages/1/edit
@@ -25,17 +40,38 @@ class TextMessagesController < ApplicationController
   # POST /text_messages.json
   def create
     @text_message = TextMessage.new(text_message_params)
-
+    @text_message.to_phone_number = "+1" + @text_message.to_phone_number
     respond_to do |format|
       if @text_message.save
+        session[:phone_number] = @text_message.to_phone_number
+        session[:message] = @text_message.message
+
         format.html { redirect_to @text_message, notice: 'Text message was successfully created.' }
+        format.js   { }
         format.json { render :show, status: :created, location: @text_message }
+
       else
         format.html { render :new }
+        format.js   { render template: 'text_messages/errors.js.erb' }
         format.json { render json: @text_message.errors, status: :unprocessable_entity }
       end
+
     end
   end
+
+  def send_twilio_message
+   
+    client ||= Twilio::REST::Client.new Rails.application.secrets.twilio_account_sid, Rails.application.secrets.twilio_auth_token
+    
+    twilio_msg = client.messages.create(
+      to: session[:phone_number],
+      from: Rails.application.secrets.twilio_phone_number,
+      body: session[:message]
+    )
+
+    render plain: twilio_msg.status
+  end
+
 
   # PATCH/PUT /text_messages/1
   # PATCH/PUT /text_messages/1.json

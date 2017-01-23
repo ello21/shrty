@@ -1,0 +1,6 @@
+$("#text-msg-err-detail").html("")
+<% if @text_message.errors.any? %>
+  <% @text_message.errors.messages.each do |message| %>
+    $("#text-msg-err-detail").append($("<li />").html("<%= message.last.last.html_safe %>"))
+  <% end %>
+<% end %>

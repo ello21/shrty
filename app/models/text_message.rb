@@ -1,5 +1,5 @@
 class TextMessage < ActiveRecord::Base
-	# after_create :send_text_message
+	# after_create :send_twilio_message
 
   	belongs_to :short_link
 
@@ -15,21 +15,9 @@ class TextMessage < ActiveRecord::Base
 		self.message = MESSAGE_TEMPLATE + self.short_link.user_short_key
 	end
 
-	def send_text_message
-		client.messages.create(
-			to: to_phone_number,
-			from: from_phone_number,
-			body: message
-		)
-	end
-
 	private
-	
-	def client
-		@client ||= Twilio::REST::Client.new
-	end
 
-	def from_phone_number
-		@from_phone_number ||= Rails.application.secrets.twilio_phone_number
-	end
+	# def from_phone_number
+	# 	@from_phone_number ||= Rails.application.secrets.twilio_phone_number
+	# end
 end
