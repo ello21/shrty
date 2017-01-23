@@ -1,0 +1,6 @@
+
+<tbody class="short-link-index", id="short-link-table">
+	<% @short_links.each do |short_link| %>
+	  <%= render partial: '/short_links/short_link', locals: { short_link: short_link} %>
+	<% end %>
+</tbody>

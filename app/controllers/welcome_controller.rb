@@ -3,6 +3,7 @@ class WelcomeController < ApplicationController
 
   def index
     @short_links = ShortLink.all
+    @short_link = ShortLink.new
   end
 
 end

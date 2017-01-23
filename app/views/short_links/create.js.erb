@@ -1,0 +1,12 @@
+$("#form_status").html("");
+
+$('#short-link-table').append("<%= escape_javascript render(:partial => 'short_links/short_link', :locals => { short_link: @short_link }) %>");
+$('#short_link_form')[0].reset();
+$("#form_status").html("<div><p>Your Shrty has been created!</p></div>");
+
+$("ul.errors").html("")
+<% if @short_link.errors.any? %>
+  <% @short_link.errors.messages.each do |message| %>
+    $("ul.errors").append($("<li />").html("<%= message.last.last.html_safe %>"))
+  <% end %>
+<% end %>
