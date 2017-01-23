@@ -7,9 +7,15 @@ class ShortLinksController < ApplicationController
     @short_links = ShortLink.all
   end
 
-  # GET /short_links/1
-  # GET /short_links/1.json
   def show
+  end
+  
+  # Redirect incoming request using short links
+  # GET /short_links/:user_short_key
+  def reroute_short_link
+    @short_link = ShortLink.find_by(user_short_key: params[:user_short_key])
+
+    redirect_to @short_link.destination_url
   end
 
   # GET /short_links/new
