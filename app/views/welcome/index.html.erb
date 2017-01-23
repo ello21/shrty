@@ -5,12 +5,11 @@
       <div class="well">
         <%= render 'short_links/form' %>
       </div>
-  </div>
-
+  
   
 
-<div class="table-responsive">
-  <table class="table table-bordered text-center">
+  <div class="table-responsive">
+  <table class="table table-condensed">
     <thead>
       <tr>
         <th class ="text-center bg-primary">Shrty</th>
@@ -19,6 +18,8 @@
     </thead>
     <%= render partial: '/short_links/index', locals: { short_links: @short_links} %>
   </table>
- </div> 
+  </div> 
+
+  </div>
 </div>
 
