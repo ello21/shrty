@@ -1,29 +1,21 @@
-<%= form_for(@short_link) do |f| %>
-  <% if @short_link.errors.any? %>
-    <div id="error_explanation">
-      <h2>Oops! Slow down there cowboy!</h2>
 
-      <ul>
-      <% @short_link.errors.messages.each do |message| %>
-        <li><%= message.last.last.html_safe %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for(@short_link, remote: true, :html => { :id => 'short_link_form' }) do |f| %>
 
-  <div class="field">
-    <%= f.label :user_short_key %><br>
-    <%= f.text_field :user_short_key %>
+  <div class="form-group">
+    <%= f.label :user_short_key, class:"control-label" %><br>
+    <%= f.text_field :user_short_key, class: "form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :destination_url %><br>
-    <%= f.text_area :destination_url %>
-  </div>
-  <div class="field">
-    <%= f.label :http_status %><br>
-    <%= f.number_field :http_status %>
+  <div class="form-group">
+    <%= f.label :destination_url, class:"control-label" %><br>
+    <%= f.text_field :destination_url, class: "form-control" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Go shrty!", class: "btn btn-primary"%>
   </div>
+
+  <div id="form_status"> 
+    <ul class="errors" id="error_explanation"></ul>
+    
+  </div>
+
 <% end %>
