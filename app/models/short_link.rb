@@ -4,7 +4,7 @@ class ShortLink < ActiveRecord::Base
 
 	SHORT_LINK_HOST = "https://shr-ty.herokuapp.com/"
 
-	has_many :text_messages
+	has_many :text_messages, dependent: :destroy
 	
 	validates :destination_url, presence: true
 	validate :valid_destination_url?
