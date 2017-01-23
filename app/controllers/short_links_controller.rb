@@ -9,7 +9,7 @@ class ShortLinksController < ApplicationController
 
   def show
   end
-  
+
   # Redirect incoming request using short links
   # GET /short_links/:user_short_key
   def reroute_short_link
@@ -25,6 +25,11 @@ class ShortLinksController < ApplicationController
 
   # GET /short_links/1/edit
   def edit
+    respond_to do |format|
+        format.html { redirect_to @short_link, notice: 'Short link was successfully created.' }
+        format.js   { }
+        format.json { render :show, status: :created, location: @short_link }
+    end
   end
 
   # POST /short_links
@@ -51,9 +56,11 @@ class ShortLinksController < ApplicationController
     respond_to do |format|
       if @short_link.update(short_link_params)
         format.html { redirect_to @short_link, notice: 'Short link was successfully updated.' }
+        format.js {}
         format.json { render :show, status: :ok, location: @short_link }
       else
         format.html { render :edit }
+        format.js { render template: 'short_links/errors.js.erb' }
         format.json { render json: @short_link.errors, status: :unprocessable_entity }
       end
     end

@@ -1,5 +1,4 @@
 class TextMessage < ActiveRecord::Base
-	# after_create :send_twilio_message
 
   	belongs_to :short_link
 
@@ -15,9 +14,4 @@ class TextMessage < ActiveRecord::Base
 		self.message = MESSAGE_TEMPLATE + self.short_link.user_short_key
 	end
 
-	private
-
-	# def from_phone_number
-	# 	@from_phone_number ||= Rails.application.secrets.twilio_phone_number
-	# end
 end

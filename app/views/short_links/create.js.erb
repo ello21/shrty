@@ -1,6 +1,6 @@
-$("#shrty-form-status").html("");
+$("#shrty-err-detail").html("");
 
 $('#short-link-table').append("<%= escape_javascript render(:partial => 'short_links/short_link', :locals => { short_link: @short_link }) %>");
 $('#short_link_form')[0].reset();
-$("#shrty-form-status").html("<div><p>Your Shrty has been created!</p></div>");
+$("#shrty-form-status").append("<div id='success'><p>Your Shrty has been created!</p></div>");
 
