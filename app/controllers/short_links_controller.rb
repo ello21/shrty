@@ -72,6 +72,7 @@ class ShortLinksController < ApplicationController
     @short_link.destroy
     respond_to do |format|
       format.html { redirect_to short_links_url, notice: 'Short link was successfully destroyed.' }
+      format.js {}
       format.json { head :no_content }
     end
   end
