@@ -1,5 +1,5 @@
-
-$("#shrty-err-detail").html("")
+$("#shrty-err-detail").html("");
+$("#success").html("");
 <% if @short_link.errors.any? %>
   <% @short_link.errors.messages.each do |message| %>
     $("#shrty-err-detail").append($("<li />").html("<%= message.last.last.html_safe %>"))

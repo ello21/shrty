@@ -2,12 +2,12 @@
 <%= form_for(@short_link, remote: true, :html => { :id => 'short_link_form' }) do |f| %>
 
   <div class="form-group">
-    <%= f.label :user_short_key, class:"control-label" %><br>
-    <%= f.text_field :user_short_key, class: "form-control" %>
+    <%= f.label :destination_url, "Long URL", class:"control-label" %><br>
+    <%= f.text_field :destination_url, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :destination_url, class:"control-label" %><br>
-    <%= f.text_field :destination_url, class: "form-control" %>
+    <%= f.label :user_short_key, "Enter Your Customized Short Link", class:"control-label" %><br>
+    <%= f.text_field :user_short_key, class: "form-control" %>
   </div>
   <div class="actions">
     <%= f.submit "Go Shrty!", class: "btn btn-primary" %>

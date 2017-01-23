@@ -1,7 +1,7 @@
 <tr id=<%= short_link.id.to_s %> >
-    <td><%= short_link.user_short_key %></td>
+    <td><%= "https://shr-ty.herokuapp.com/" + short_link.user_short_key %></td>
     <td><%= short_link.destination_url %></td>
-    <td class="text-center shrt-link-share"><%= link_to 'Share', new_text_message_path(short_link_id: short_link.id), remote: true, class: "btn btn-primary btn-sm" %></td>
-    <td class="text-center"><%= link_to 'Edit', edit_short_link_path(short_link), remote: true, class: "btn btn-warning btn-sm" %></td>
-    <td class="text-center"><%= link_to 'Destroy', short_link, method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: "btn btn-danger btn-sm" %></td>
+    <td class="shrt-link-share"><%= link_to 'Share', new_text_message_path(short_link_id: short_link.id), remote: true, class: "btn btn-info btn-sm" %></td>
+    <td ><%= link_to 'Edit', edit_short_link_path(short_link), remote: true, class: "btn btn-primary btn-sm" %></td>
+    <td><%= link_to 'Delete', short_link, method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: "btn btn-inverse btn-sm" %></td>
  </tr>

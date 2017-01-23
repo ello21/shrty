@@ -1,1 +1,3 @@
+$(document).find( ".share-msg-form" ).remove();
+$(document).find( ".edit-short-form" ).remove();
 $("tr" +"#" + "<%= @short_link.id %>").after("<%= escape_javascript render(:partial => 'text_messages/form', :locals => { text_message: @text_message }) %>");

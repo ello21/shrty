@@ -7,9 +7,15 @@ class ShortLinksController < ApplicationController
     @short_links = ShortLink.all
   end
 
-  # GET /short_links/1
-  # GET /short_links/1.json
   def show
+  end
+
+  # Redirect incoming request using short links
+  # GET /short_links/:user_short_key
+  def reroute_short_link
+    @short_link = ShortLink.find_by(user_short_key: params[:user_short_key])
+
+    redirect_to @short_link.destination_url
   end
 
   # GET /short_links/new
@@ -19,6 +25,11 @@ class ShortLinksController < ApplicationController
 
   # GET /short_links/1/edit
   def edit
+    respond_to do |format|
+        format.html { redirect_to @short_link, notice: 'Short link was successfully created.' }
+        format.js   { }
+        format.json { render :show, status: :created, location: @short_link }
+    end
   end
 
   # POST /short_links
@@ -45,9 +56,11 @@ class ShortLinksController < ApplicationController
     respond_to do |format|
       if @short_link.update(short_link_params)
         format.html { redirect_to @short_link, notice: 'Short link was successfully updated.' }
+        format.js {}
         format.json { render :show, status: :ok, location: @short_link }
       else
         format.html { render :edit }
+        format.js { render template: 'short_links/errors.js.erb' }
         format.json { render json: @short_link.errors, status: :unprocessable_entity }
       end
     end
@@ -59,6 +72,7 @@ class ShortLinksController < ApplicationController
     @short_link.destroy
     respond_to do |format|
       format.html { redirect_to short_links_url, notice: 'Short link was successfully destroyed.' }
+      format.js {}
       format.json { head :no_content }
     end
   end

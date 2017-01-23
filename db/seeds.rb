@@ -5,15 +5,30 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-require 'faker'
 
 ShortLink.destroy_all
 TestMessages.destroy_all
 
-20.times do
-	ShortLink.create(
-		user_short_key: Faker::Internet.unique.password(1,10),
-		destination_url: Faker::Internet.url, 
-		http_status: 301)
-end
+ShortLink.create!(
+		user_short_key: "tb",
+		destination_url: "http://www.ticketbud.com", 
+		http_status: 301
+)
 
+ShortLink.create!(
+		user_short_key: "3lz",
+		destination_url: "http://www.facebook.com", 
+		http_status: 301
+)
+
+ShortLink.create!(
+		user_short_key: "2cn3",
+		destination_url: "http://www.amazon.com", 
+		http_status: 301
+)
+
+ShortLink.create!(
+		user_short_key: "techy",
+		destination_url: "http://http://topyaps.com/top-10-tech-magazines-recommended-for-technology-buffs", 
+		http_status: 301
+)

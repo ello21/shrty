@@ -68,9 +68,8 @@ class TextMessagesController < ApplicationController
       from: Rails.application.secrets.twilio_phone_number,
       body: session[:message]
     )
-
-    # render plain: twilio_msg.status
-    puts twilio_msg.status
+    head :ok
+    reset_session
   end
 
 
