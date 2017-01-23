@@ -52,13 +52,6 @@ RSpec.describe TextMessagesController, type: :controller do
     end
   end
 
-  describe "GET #new" do
-    it "assigns a new text_message as @text_message" do
-      get :new, {}, valid_session
-      expect(assigns(:text_message)).to be_a_new(TextMessage)
-    end
-  end
-
   describe "GET #edit" do
     it "assigns the requested text_message as @text_message" do
       text_message = TextMessage.create! valid_attributes

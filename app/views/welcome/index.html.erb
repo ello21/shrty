@@ -3,18 +3,16 @@
     <%= render 'short_links/form' %>
   </div>
 
+<div class="table-responsive">
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
         <th>Shrty</th>
         <th>Long URL</th>
-        <th colspan="3"></th>
       </tr>
     </thead>
-
     <%= render partial: '/short_links/index', locals: { short_links: @short_links} %>
-  
   </table>
-  
+ </div> 
 </div>
 

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  post 'text_messages/send_twilio_message' => 'text_messages#send_twilio_message'
+
   resources :text_messages
   resources :short_links
   # The priority is based upon order of creation: first created -> highest priority.
