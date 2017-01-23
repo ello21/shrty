@@ -69,7 +69,8 @@ class TextMessagesController < ApplicationController
       body: session[:message]
     )
 
-    render plain: twilio_msg.status
+    # render plain: twilio_msg.status
+    puts twilio_msg.status
   end
 
 
