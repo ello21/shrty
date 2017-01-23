@@ -1,14 +1,20 @@
 <div class="container">
-  <div class="well">
-    <%= render 'short_links/form' %>
+  <div class="center jumbotron text-center">
+      <h1>shrty!</h1>
+      <br>
+      <div class="well">
+        <%= render 'short_links/form' %>
+      </div>
   </div>
 
+  
+
 <div class="table-responsive">
-  <table class="table table-bordered table-striped">
+  <table class="table table-bordered text-center">
     <thead>
       <tr>
-        <th>Shrty</th>
-        <th>Long URL</th>
+        <th class ="text-center bg-primary">Shrty</th>
+        <th class ="text-center bg-primary">Long URL</th>
       </tr>
     </thead>
     <%= render partial: '/short_links/index', locals: { short_links: @short_links} %>
