@@ -28,10 +28,12 @@ class ShortLinksController < ApplicationController
 
     respond_to do |format|
       if @short_link.save
-        format.html { redirect_to @short_link, notice: 'Short link was successfully created.' }
+        # format.html { redirect_to @short_link, notice: 'Short link was successfully created.' }
+        format.js   { }
         format.json { render :show, status: :created, location: @short_link }
       else
-        format.html { render :new }
+        # format.html { render :new }
+        format.js   { render template: 'short_links/errors.js.erb' }
         format.json { render json: @short_link.errors, status: :unprocessable_entity }
       end
     end
