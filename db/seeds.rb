@@ -5,3 +5,15 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'faker'
+
+ShortLink.destroy_all
+TestMessages.destroy_all
+
+20.times.do
+	ShortLink.create(
+		user_short_key: Faker::Internet.unique.password(1,10),
+		destination_url: Faker::Internet.url, 
+		http_status: 301)
+end
+
