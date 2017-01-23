@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 ShortLink.destroy_all
-TestMessages.destroy_all
+TextMessage.destroy_all
 
 ShortLink.create!(
 		user_short_key: "tb",
