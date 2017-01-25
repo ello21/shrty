@@ -1,13 +1,18 @@
-<div class="container">
-  <div class="center jumbotron text-center">
-      <h1>shrty!</h1>
-      <br>
-      <div class="well">
-        <%= render 'short_links/form' %>
-      </div>
-  
-  
 
+<div class="jumbotron jumbotron-fluid">
+<div class="jum-bkgrd">
+  <div class="container">
+      <h1 class="text-center">shrty.</h1>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 ">
+          <%= render 'short_links/form' %>
+        </div>
+      </div>
+  </div>
+</div>
+</div>
+  
+<div class="container">
   <div class="table-responsive">
   <table class="table table-condensed">
     <thead>
@@ -19,7 +24,4 @@
     <%= render partial: '/short_links/index', locals: { short_links: @short_links} %>
   </table>
   </div> 
-
-  </div>
 </div>
-
