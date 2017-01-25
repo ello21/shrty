@@ -1,6 +1,0 @@
-= shrty {<img src="https://travis-ci.org/ello21/shrty.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/ello21/shrty]
-=== Create Customized Short URL Links and Share via SMS -- <i>go shrty</i>!
-
-=== Website: https://shr-ty.herokuapp.com
-
-{<img src="app/assets/images/shrty_screenshot.png"/>}
