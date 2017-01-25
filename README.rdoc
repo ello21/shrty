@@ -3,4 +3,4 @@
 
 === Website: https://shr-ty.herokuapp.com
 
-<img src="app/assets/images/shrty_screenshot.png"/>
+<img src=app/assets/images/shrty_screenshot.png>
